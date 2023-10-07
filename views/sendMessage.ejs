@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/global.css">
+</head>
+<body>
+    <div id="outerBox">
+        <% if(message.status == 'success') { %>
+        <div class="successMessageBox messageBox">
+            <i class="fa-regular fa-circle-check"></i>
+           <h3>  Message sent successfully </h3>
+        </div>
+       <% } if(message.status == 'failed'){ %>
+        <div class="failMessageBox messageBox">
+            <i class="fa-regular fa-circle-xmark"></i>
+           <h3>  Message sent Failed. Please check API </h3>
+        </div>
+        <% } %>
+    </div>
+</body>
+</html>

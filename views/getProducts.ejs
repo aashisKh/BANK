@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./global.ejs') %>
+        <link rel="stylesheet" href="/styles/listProductDesign.css">
+        <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container mb-5 mt-5">
+        <div class="row" id="topSection">
+            <div class="col-md-3 mt-2"><h3>Product List</h3></div>
+            <div class="col-md-6 mt-2"><input type="search" class="form-control" placeholder="search by name " id="productSearchBar"></div>
+            <div class="col-md-3 mt-2"><a href="/api/addProduct" class="btn btn-primary">Add Product </a></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table-striped">
+            <tr class="bg-success" id="tableHeading">
+                <th> Name</th>
+                <th> Model</th>
+                <th> Price</th>
+                <th> Category</th>
+                <th>Expire Date</th>
+                <th> Status</th>
+                <th>Vendor </th>
+                <th> Address</th>
+                <th> Contact</th>
+                <th>Actions</th>
+            </tr>
+            <tbody>
+                <% allproducts.forEach((product)=> { %>
+                    <tr data-id=<%=product._id %> >
+                        <td>
+                            <%= product.name %>
+                        </td>
+                        <td>
+                            <%= product.model %>
+                        </td>
+                        <td>
+                            <%= product.price %>
+                        </td>
+                        <td>
+                            <%= product.category %>
+                        </td>
+                        <td>
+                            <%= product.expireDate %>
+                        </td>
+                        <td>
+                            <%= product.active==true ? 'Active' : 'Inactive' %>
+                        </td>
+                        <td>
+                            <%= product.vendor %>
+                        </td>
+                        <td>
+                            <%= product.address %>
+                        </td>
+                        <td>
+                            <%= product.contact %>
+                        </td>
+                        <td class="action"> <button class="btn btn-warning btn-sm text-white update"> Update </button>
+                            <button class="btn btn-danger btn-sm delete"> Delete </button>
+                        </td>
+                    </tr>
+                    <% })%>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div id="updateContainer">
+        <%- include('./updateProduct') %>
+    </div>
+
+    <script src="/js/listProductOperations.js"></script>
+</body>
+
+</html>
